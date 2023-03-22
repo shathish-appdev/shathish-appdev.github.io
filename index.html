@@ -159,9 +159,8 @@
   </div>
 
 <script>
-
 const typingText = document.getElementById('typing-text');
-const phrase = 'Meet Leo - Your friendly assistant';
+const phrase = 'Your friendly assistant';
 let currentLength = 0;
 let intervalId = null;
 
@@ -171,6 +170,9 @@ function animateTyping() {
   intervalId = setInterval(() => {
     if (currentLength === phraseLength) {
       clearInterval(intervalId);
+      setTimeout(() => {
+        typingText.remove();
+      }, 1000);
       return;
     }
     
@@ -181,6 +183,7 @@ function animateTyping() {
 }
 
 animateTyping();
+
 
 
 
