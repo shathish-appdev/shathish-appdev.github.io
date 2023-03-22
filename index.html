@@ -29,7 +29,7 @@
   display: inline-block;
   width: 0;
   overflow: hidden;
-  animation: typing 2s infinite;
+  animation: typing 2s 5s;
 }
 
 @keyframes typing {
@@ -160,7 +160,7 @@
 
 <script>
 const typingText = document.getElementById('typing-text');
-const phrase = 'Your friendly assistant';
+const phrase = 'Meet Leo - Your friendly assistant';
 let currentLength = 0;
 let intervalId = null;
 
