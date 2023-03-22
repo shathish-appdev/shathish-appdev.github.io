@@ -175,7 +175,7 @@
       const securityKey = securityKeyInput.value.trim();
       if (text && securityKey) {
         // Only generate a response if the security key is correct
-        if (securityKey === 'ppp') {
+        if (securityKey === 'Pp') {
           appendMessage(text, 'user-message');
           const response = generateResponse(text, context, securityKey);
           appendMessage(response, 'chatbot-message');
