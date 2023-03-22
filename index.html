@@ -16,6 +16,27 @@
       background-color: #f0f0f0;
     }
 
+#banner {
+  background-color: #2196F3;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+#typing-text {
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  animation: typing 2s infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
     #chat-container {
       background-color: white;
       border-radius: 5px;
@@ -119,6 +140,7 @@
   </style>
 </head>
 <body>
+   <div id="banner">Leo - <span id="typing-text"></span></div>
   <div id="security-key-container">
     <label id="security-key-label" for="security-key-input">Security Key:</label>
     <input type="text" id="security-key-input" placeholder="Enter security key...">
@@ -137,6 +159,41 @@
   </div>
 
 <script>
+
+const typingText = document.getElementById('typing-text');
+const phrases = [
+  'Your friendly assistant',
+  'Here to help you',
+  'Ready to chat',
+  // add more phrases here
+];
+let currentPhraseIndex = 0;
+
+function animateTyping() {
+  const currentPhrase = phrases[currentPhraseIndex];
+  const currentPhraseLength = currentPhrase.length;
+  let currentLength = 0;
+  
+  const intervalId = setInterval(() => {
+    if (currentLength === currentPhraseLength) {
+      clearInterval(intervalId);
+      setTimeout(() => {
+        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+        animateTyping();
+      }, 1000);
+      return;
+    }
+    
+    const newText = currentPhrase.slice(0, currentLength + 1);
+    typingText.textContent = newText;
+    currentLength++;
+  }, 100);
+}
+
+animateTyping();
+
+
+
     const chat = document.getElementById('chat');
     const userInput = document.getElementById('user-input');
     const sendButton = document.getElementById('send-button');
