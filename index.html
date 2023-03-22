@@ -170,9 +170,7 @@ function animateTyping() {
   intervalId = setInterval(() => {
     if (currentLength === phraseLength) {
       clearInterval(intervalId);
-      setTimeout(() => {
-        typingText.remove();
-      }, 1000);
+ 
       return;
     }
     
