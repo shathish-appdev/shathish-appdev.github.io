@@ -29,11 +29,11 @@
   display: inline-block;
   width: 0;
   overflow: hidden;
-  animation: typing 5s 10s;
+  animation: typing 2s infinite;
 }
 
 @keyframes typing {
-  from { width: 50%; }
+  from { width: 0; }
   to { width: 100%; }
 }
 
@@ -168,18 +168,22 @@ const phrases = [
   // add more phrases here
 ];
 let currentPhraseIndex = 0;
+let currentLength = 0;
+let intervalId = null;
 
 function animateTyping() {
   const currentPhrase = phrases[currentPhraseIndex];
   const currentPhraseLength = currentPhrase.length;
-  let currentLength = 0;
   
-  const intervalId = setInterval(() => {
+  intervalId = setInterval(() => {
     if (currentLength === currentPhraseLength) {
       clearInterval(intervalId);
       setTimeout(() => {
-        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
-        animateTyping();
+        currentPhraseIndex++;
+        if (currentPhraseIndex < phrases.length) {
+          currentLength = 0;
+          animateTyping();
+        }
       }, 1000);
       return;
     }
