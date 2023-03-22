@@ -131,10 +131,12 @@
     </div>
   </div>
 
-  <script>
+<script>
     const chat = document.getElementById('chat');
     const userInput = document.getElementById('user-input');
     const sendButton = document.getElementById('send-button');
+    const securityKeyInput = document.getElementById('security-key-input');
+    const contextInput = document.getElementById('context-input');
 
     function createMessageElement(text, className) {
       const message = document.createElement('div');
@@ -149,39 +151,50 @@
       chat.scrollTop = chat.scrollHeight;
     }
 
-    function generateResponse(userInput) {
-  // Define the chatbot's responses here
-  const responses = {
-    'hello': 'Hello there!',
-    'how are you': 'I am doing well, thank you for asking.',
-    'what is your name': 'My name is Chatbot.',
-    // add more responses here
-  };
+    function generateResponse(userInput, context) {
+      // Define the chatbot's responses here
+      const responses = {
+        'hello': 'Hello there!',
+        'how are you': 'I am doing well, thank you for asking.',
+        'what is your name': 'My name is Chatbot.',
+        // add more responses here
+      };
 
-  // Try to find a matching response for the user's input
-  const response = responses[userInput.toLowerCase()] || "I'm sorry, I don't understand.";
+      // Try to find a matching response for the user's input
+      const response = responses[userInput.toLowerCase()] || "I'm sorry, I don't understand.";
 
-  return response;
-}
+      // Update the response based on the context
+      if (context) {
+        response += ` Your context is: "${context}".`;
+      }
 
-function sendMessage() {
-  const text = userInput.value.trim();
-  if (text) {
-    appendMessage(text, 'user-message');
-    const response = generateResponse(text);
-    appendMessage(response, 'chatbot-message');
-    userInput.value = '';
-  }
-}
+      return response;
+    }
 
+    function sendMessage() {
+      const text = userInput.value.trim();
+      const context = contextInput.value.trim();
+      const securityKey = securityKeyInput.value.trim();
+      if (text && securityKey) {
+        // Only generate a response if the security key is correct
+        if (securityKey === 'password123') {
+          appendMessage(text, 'user-message');
+          const response = generateResponse(text, context);
+          appendMessage(response, 'chatbot-message');
+          userInput.value = '';
+        } else {
+          alert('Incorrect security key.');
+        }
+      }
+    }
 
     sendButton.addEventListener('click', sendMessage);
-    userInput.addEventListener('keydown',function(event) {
-if (event.key === 'Enter') {
-sendMessage();
-}
-});
-</script>
+    userInput.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+    });
+  </script>
 
 </body>
 </html>
