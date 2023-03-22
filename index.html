@@ -1,37 +1,116 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Node Map</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-LXgyvV7m+89mSfQT8cEJ/ZzLZ7CpQLITJ6G+5O5d5YyIF5BQJ1r0kCz+gMxlJGifh+Cx0lrUajP6gm/K3+Uy1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-      #map {
-        height: 500px;
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    #chat-container {
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      max-width: 400px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    #chat {
+      padding: 20px;
+      max-height: 500px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .message {
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .user-message {
+      background-color: #e0e0e0;
+      align-self: flex-end;
+    }
+
+    .chatbot-message {
+      background-color: #2196F3;
+      color: white;
+    }
+
+    #input-container {
+      display: flex;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    #user-input {
+      flex: 1;
+      border: none;
+      padding: 20px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    #send-button {
+      background-color: #2196F3;
+      border: none;
+      color: white;
+      padding: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    #send-button:hover {
+      background-color: #1976D2;
+    }
+  </style>
+</head>
+<body>
+  <div id="chat-container">
+    <div id="chat"></div>
+    <div id="input-container">
+      <input type="text" id="user-input" placeholder="Type your message here...">
+      <button id="send-button">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const chat = document.getElementById('chat');
+    const userInput = document.getElementById('user-input');
+    const sendButton = document.getElementById('send-button');
+
+    function createMessageElement(text, className) {
+      const message = document.createElement('div');
+      message.textContent = text;
+      message.classList.add('message', className);
+      return message;
+    }
+
+    function appendMessage(text, className) {
+      const message = createMessageElement(text, className);
+      chat.appendChild(message);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function sendMessage() {
+      const text = userInput.value.trim();
+      if (text) {
+        appendMessage(text, 'user-message');
+        appendMessage(text, 'chatbot-message');
+        userInput.value = '';
       }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-Hello
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-1OAVdnW+f9vY7VpPyltDk8oUsPFXq3Fl7T1TjxuTfR8gXQs72OVHknPiBtGAtE+8Vv4zk/SAdKbV4m2LO1W7Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-      var map = L.map("map").setView([51.505, -0.09], 13);
+    }
 
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-        maxZoom: 18,
-      }).addTo(map);
-
-      var nodes = [
-        { name: "Node 1", latitude: 51.5074, longitude: -0.1278 },
-        { name: "Node 2", latitude: 51.5171, longitude: -0.1062 },
-        { name: "Node 3", latitude: 51.5136, longitude: -0.0983 }
-      ];
-
-      nodes.forEach(function(node) {
-        L.marker([node.latitude, node.longitude]).addTo(map).bindPopup(node.name);
-      });
-    </script>
-  </body>
-</html>
+    sendButton.addEventListener('click', sendMessage);
+    userInput.addEventListener('keydown',
