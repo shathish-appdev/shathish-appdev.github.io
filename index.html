@@ -161,32 +161,20 @@
 <script>
 
 const typingText = document.getElementById('typing-text');
-const phrases = [
-  'Your friendly assistant'
-  // add more phrases here
-];
-let currentPhraseIndex = 0;
+const phrase = 'Your friendly assistant';
 let currentLength = 0;
 let intervalId = null;
 
 function animateTyping() {
-  const currentPhrase = phrases[currentPhraseIndex];
-  const currentPhraseLength = currentPhrase.length;
+  const phraseLength = phrase.length;
   
   intervalId = setInterval(() => {
-    if (currentLength === currentPhraseLength) {
+    if (currentLength === phraseLength) {
       clearInterval(intervalId);
-      setTimeout(() => {
-        currentPhraseIndex++;
-        if (currentPhraseIndex < phrases.length) {
-          currentLength = 0;
-          animateTyping();
-        }
-      }, 1000);
       return;
     }
     
-    const newText = currentPhrase.slice(0, currentLength + 1);
+    const newText = phrase.slice(0, currentLength + 1);
     typingText.textContent = newText;
     currentLength++;
   }, 100);
