@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Node Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-LXgyvV7m+89mSfQT8cEJ/ZzLZ7CpQLITJ6G+5O5d5YyIF5BQJ1r0kCz+gMxlJGifh+Cx0lrUajP6gm/K3+Uy1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      #map {
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-1OAVdnW+f9vY7VpPyltDk8oUsPFXq3Fl7T1TjxuTfR8gXQs72OVHknPiBtGAtE+8Vv4zk/SAdKbV4m2LO1W7Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      var map = L.map("map").setView([51.505, -0.09], 13);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+      }).addTo(map);
+
+      var nodes = [
+        { name: "Node 1", latitude: 51.5074, longitude: -0.1278 },
+        { name: "Node 2", latitude: 51.5171, longitude: -0.1062 },
+        { name: "Node 3", latitude: 51.5136, longitude: -0.0983 }
+      ];
+
+      nodes.forEach(function(node) {
+        L.marker([node.latitude, node.longitude]).addTo(map).bindPopup(node.name);
+      });
+    </script>
+  </body>
+</html>
