@@ -153,20 +153,6 @@
 
     function generateResponse(userInput, context, securityKey) {
   // Define the chatbot's responses here
-  const responses = {
-    'hello': 'Hello there!',
-    'how are you': 'I am doing well, thank you for asking.',
-    'what is your name': 'My name is Chatbot.',
-    // add more responses here
-  };
-
-  // Try to find a matching response for the user's input
-  let responseText = responses[userInput.toLowerCase()] || "I'm sorry, I don't understand.";
-
-  // Update the response based on the context
-  if (context) {
-    responseText += ` Your context is: "${context}".`;
-  }
 
   // Create the response object
   const response = {
@@ -190,7 +176,7 @@
         // Only generate a response if the security key is correct
         if (securityKey === 'ppp') {
           appendMessage(text, 'user-message');
-          const response = generateResponse(text, context);
+          const response = generateResponse(text, context, securityKey);
           appendMessage(response, 'chatbot-message');
           userInput.value = '';
         } else {
