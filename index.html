@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,6 +8,7 @@
     body {
       font-family: Arial, sans-serif;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
@@ -22,6 +23,7 @@
       max-width: 400px;
       width: 100%;
       overflow: hidden;
+      margin-bottom: 20px;
     }
 
     #chat {
@@ -51,6 +53,7 @@
     #input-container {
       display: flex;
       border-top: 1px solid #e0e0e0;
+      margin-bottom: 20px;
     }
 
     #user-input {
@@ -74,9 +77,52 @@
     #send-button:hover {
       background-color: #1976D2;
     }
+
+    #security-key-container {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    #security-key-label {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    #security-key-input {
+      padding: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    #context-container {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    #context-label {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    #context-input {
+      padding: 10px;
+      font-size: 16px;
+      outline: none;
+    }
   </style>
 </head>
 <body>
+  <div id="security-key-container">
+    <label id="security-key-label" for="security-key-input">Security Key:</label>
+    <input type="text" id="security-key-input" placeholder="Enter security key...">
+  </div>
+
+  <div id="context-container">
+    <label id="context-label" for="context-input">Context:</label>
+    <textarea id="context-input" placeholder="Enter context text..."></textarea>
+  </div>
   <div id="chat-container">
     <div id="chat"></div>
     <div id="input-container">
