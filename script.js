@@ -68,10 +68,12 @@ async function generateResponse(userInput, context, securityKey) {
 
     // const data = await apiResponse.json(); // Parse the response data as JSON
     const data = await apiResponse.text(); // Parse the response data as JSON
-    const body = data.body; // Extract the body from the response data
+//     const body = data.body; // Extract the body from the response data
+    const body = data; // Extract the body from the response data
 
     // Handle the response here
     console.log(body);
+    console.log(JSON.parse(data).body);
     return body; // Return the body from the Lambda function
   } catch (error) {
     // Handle any errors here
