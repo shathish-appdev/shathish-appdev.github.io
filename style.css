@@ -1,0 +1,134 @@
+ body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+#banner {
+  background-color: #2196F3;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+#typing-text {
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  animation: typing 2s;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+    #chat-container {
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      max-width: 400px;
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    #chat {
+      padding: 20px;
+      max-height: 500px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+  
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  word-wrap: break-word; /* add this line to wrap long words */
+  max-width: 80%; /* add this line to limit the width of the message */
+}
+
+
+    .user-message {
+      background-color: #e0e0e0;
+      align-self: flex-end;
+    }
+
+    .chatbot-message {
+      background-color: #2196F3;
+      color: white;
+    }
+
+    #input-container {
+      display: flex;
+      border-top: 1px solid #e0e0e0;
+      margin-bottom: 20px;
+    }
+
+    #user-input {
+      flex: 1;
+      border: none;
+      padding: 20px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    #send-button {
+      background-color: #2196F3;
+      border: none;
+      color: white;
+      padding: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    #send-button:hover {
+      background-color: #1976D2;
+    }
+
+    #security-key-container {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    #security-key-label {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    #security-key-input {
+      padding: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    #context-container {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    #context-label {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    #context-input {
+      padding: 10px;
+      font-size: 16px;
+      outline: none;
+    }
