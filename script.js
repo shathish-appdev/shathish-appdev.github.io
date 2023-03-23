@@ -90,11 +90,10 @@ function animateTyping() {
         //if (securityKey === 'Ppp') {
           appendMessage(text, 'user-message');
           const response = generateResponse(text, context, securityKey);
+          console.log(response);
           appendMessage(response, 'chatbot-message');
           userInput.value = '';
-        //} else {
-          //alert('Incorrect security key.');
-        //}
+
       }
     }
 
