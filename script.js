@@ -70,7 +70,6 @@ function animateTyping() {
 
     // Handle the response here
     console.log(data);
-
     return data; // Return the data from the Lambda function
   } catch (error) {
     // Handle any errors here
@@ -80,22 +79,23 @@ function animateTyping() {
 }
 
 
-
-    function sendMessage() {
-      const text = userInput.value.trim();
-      const context = contextInput.value.trim();
-      const securityKey = securityKeyInput.value.trim();
-      if (text && securityKey) {
-        // Only generate a response if the security key is correct
-        //if (securityKey === 'Ppp') {
-          appendMessage(text, 'user-message');
-          const response = generateResponse(text, context, securityKey);
-          console.log(response);
-          appendMessage(response, 'chatbot-message');
-          userInput.value = '';
-
-      }
+async function sendMessage() {
+  const text = userInput.value.trim();
+  const context = contextInput.value.trim();
+  const securityKey = securityKeyInput.value.trim();
+  if (text && securityKey) {
+    appendMessage(text, 'user-message');
+    try {
+      const response = await generateResponse(text, context, securityKey);
+      appendMessage(response, 'chatbot-message');
+    } catch (error) {
+      console.error(error);
+      appendMessage('Sorry, an error occurred.', 'chatbot-message');
     }
+    userInput.value = '';
+  }
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
   animateTyping();
