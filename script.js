@@ -6,6 +6,8 @@ let intervalId = null;
 // Create the userInputArray array
 const userInputArray = [];
 
+// Create the gptResponseArray array
+const gptResponseArray = [];
 
 function animateTyping() {
   const phraseLength = phrase.length;
@@ -57,7 +59,8 @@ async function generateResponse(userInput, context, securityKey) {
   const response = {
     security_key: securityKey,
     context: context,
-    given_input: userInputArray
+    given_input: userInputArray,
+    output_received: gptResponseArray,
   };
 
   // Convert the response object to a JSON string
@@ -80,7 +83,7 @@ async function generateResponse(userInput, context, securityKey) {
 
     // Handle the response here
     console.log(body);
-    // console.log(JSON.parse(data).body);
+    gptResponseArray.push(body);
     return body; // Return the body from the Lambda function
   } catch (error) {
     // Handle any errors here
