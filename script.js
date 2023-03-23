@@ -55,8 +55,30 @@ function animateTyping() {
 
   // Convert the response object to a JSON string
   const jsonResponse = JSON.stringify(response);
-  // alert(jsonResponse);
-  return jsonResponse;
+
+      
+    // Make a POST request to the server
+  fetch('https://clmugv7h6i.execute-api.ap-south-1.amazonaws.com/default/FuntionToPassInput', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: jsonResponse
+  })
+  .then(response => response.json())
+  .then(data => {
+    // Handle the response from the server here
+    const responseString = JSON.stringify(data);
+    console.log(responseString);
+    // You can do something with the responseString here
+  })
+  .catch(error => {
+    // Handle any errors that occur during the request
+    console.error(error);
+  });
+
+  // Return the JSON string
+  return responseString;
 }
 
 
