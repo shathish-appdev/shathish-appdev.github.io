@@ -47,7 +47,7 @@
       max-height: 500px;
       overflow-y: auto;
       display: flex;
-      flex-direction: column;
+      flex-direction: flex-grow: 1;
     }
 
   
