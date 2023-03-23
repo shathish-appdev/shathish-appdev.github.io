@@ -43,7 +43,7 @@ function animateTyping() {
       chat.scrollTop = chat.scrollHeight;
     }
 
-    function generateResponse(userInput, context, securityKey) {
+    async function generateResponse(userInput, context, securityKey) {
   // Define the chatbot's responses here
 
   // Create the response object
@@ -56,27 +56,29 @@ function animateTyping() {
   // Convert the response object to a JSON string
   const jsonResponse = JSON.stringify(response);
 
-  // Send a POST request to the API endpoint
-  fetch('https://clmugv7h6i.execute-api.ap-south-1.amazonaws.com/default/FuntionToPassInput', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json' // ,
-      //'Access-Control-Allow-Origin': 'https://shathish-appdev.github.io'
-    },
-    body: jsonResponse
-  })
-  .then(response => response.text())
-  .then(data => {
+  try {
+    // Send a POST request to the API endpoint
+    const apiResponse = await fetch('https://clmugv7h6i.execute-api.ap-south-1.amazonaws.com/default/FuntionToPassInput', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json' 
+      },
+      body: jsonResponse
+    });
+
+    const data = await apiResponse.json();
+
     // Handle the response here
     console.log(data);
-  })
-  .catch(error => {
+
+    return data; // Return the data from the Lambda function
+  } catch (error) {
     // Handle any errors here
     console.error(error);
-  });
-
-  return response;
+    return error; // Return the error
+  }
 }
+
 
 
     function sendMessage() {
