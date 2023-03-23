@@ -31,6 +31,7 @@ body {
   overflow: hidden;
   animation: typing 2s;
   animation-fill-mode: forwards;
+  white-space: nowrap;
 }
 
 @keyframes typing {
@@ -42,9 +43,8 @@ body {
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  max-width: 400px;
-  width: 100%;
-  overflow: hidden;
+  max-width: 100%;
+  width: 400px;
   margin-bottom: 20px;
 }
 
@@ -62,6 +62,7 @@ body {
   border-radius: 5px;
   word-wrap: break-word;
   max-width: 80%;
+  overflow-wrap: break-word;
 }
 
 .user-message {
@@ -75,12 +76,10 @@ body {
 }
 
 #input-container {
-  position: fixed;
-  bottom: 0;
   display: flex;
   border-top: 1px solid #e0e0e0;
-  width: 100%; /* add this line to make the input container full width */
-  max-width: 400px; /* add this line to make the input container responsive */
+  width: 100%; 
+  max-width: 400px; 
 }
 
 #user-input {
@@ -99,6 +98,8 @@ body {
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s;
+  width: 30%;
+  max-width: 100px;
 }
 
 #send-button:hover {
@@ -123,4 +124,6 @@ body {
   padding: 10px;
   font-size: 16px;
   outline: none;
+  width: 100%;
+  max-width: 400px;
 }
