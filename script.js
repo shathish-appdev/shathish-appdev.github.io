@@ -19,7 +19,7 @@ function animateTyping() {
   }, 100);
 }
 
-animateTyping();
+
 
 
 
@@ -77,9 +77,13 @@ animateTyping();
       }
     }
 
+document.addEventListener('DOMContentLoaded', function() {
+  animateTyping();
     sendButton.addEventListener('click', sendMessage);
     userInput.addEventListener('keydown', function(event) {
       if (event.key === 'Enter') {
         sendMessage();
       }
     });
+});
+
