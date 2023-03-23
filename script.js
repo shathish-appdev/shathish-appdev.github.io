@@ -89,14 +89,14 @@ function animateTyping() {
       const securityKey = securityKeyInput.value.trim();
       if (text && securityKey) {
         // Only generate a response if the security key is correct
-        if (securityKey === 'Ppp') {
+        //if (securityKey === 'Ppp') {
           appendMessage(text, 'user-message');
           const response = generateResponse(text, context, securityKey);
           appendMessage(response, 'chatbot-message');
           userInput.value = '';
-        } else {
-          alert('Incorrect security key.');
-        }
+        //} else {
+          //alert('Incorrect security key.');
+        //}
       }
     }
 
