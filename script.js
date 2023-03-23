@@ -73,7 +73,7 @@ async function generateResponse(userInput, context, securityKey) {
 
     // Handle the response here
     console.log(body);
-    console.log(JSON.parse(data).body);
+    // console.log(JSON.parse(data).body);
     return body; // Return the body from the Lambda function
   } catch (error) {
     // Handle any errors here
