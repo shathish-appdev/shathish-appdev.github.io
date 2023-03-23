@@ -60,8 +60,8 @@ function animateTyping() {
   fetch('https://clmugv7h6i.execute-api.ap-south-1.amazonaws.com/default/FuntionToPassInput', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'https://shathish-appdev.github.io'
+      'Content-Type': 'application/json' // ,
+      //'Access-Control-Allow-Origin': 'https://shathish-appdev.github.io'
     },
     body: jsonResponse
   })
