@@ -66,7 +66,7 @@ function animateTyping() {
       body: jsonResponse
     });
 
-    const data = await apiResponse.json();
+    const data = await apiResponse;
 
     // Handle the response here
     console.log(data);
