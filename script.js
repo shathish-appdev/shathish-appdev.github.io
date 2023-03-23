@@ -43,7 +43,7 @@ function animateTyping() {
       chat.scrollTop = chat.scrollHeight;
     }
 
-    async function generateResponse(userInput, context, securityKey) {
+async function generateResponse(userInput, context, securityKey) {
   // Define the chatbot's responses here
 
   // Create the response object
@@ -66,17 +66,19 @@ function animateTyping() {
       body: jsonResponse
     });
 
-    const data = await apiResponse;
+    const data = await apiResponse.json(); // Parse the response data as JSON
+    const body = data.body; // Extract the body from the response data
 
     // Handle the response here
-    console.log(data);
-    return data; // Return the data from the Lambda function
+    console.log(body);
+    return body; // Return the body from the Lambda function
   } catch (error) {
     // Handle any errors here
     console.error(error);
     return error; // Return the error
   }
 }
+
 
 
 async function sendMessage() {
