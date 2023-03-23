@@ -62,6 +62,7 @@ function animateTyping() {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
+      'Access-Control-Allow-Origin': 'https://shathish-appdev.github.io'
     },
     body: jsonResponse
   })
