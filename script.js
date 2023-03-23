@@ -2,6 +2,10 @@ const typingText = document.getElementById('typing-text');
 const phrase = 'Meet Leo - Your friendly assistant';
 let currentLength = 0;
 let intervalId = null;
+ 
+// Create the userInputArray array
+const userInputArray = [];
+
 
 function animateTyping() {
   const phraseLength = phrase.length;
@@ -45,8 +49,6 @@ function animateTyping() {
 
 async function generateResponse(userInput, context, securityKey) {
 
-  // Create the userInputArray array
-  const userInputArray = [];
 
   // Add userInput to the array
   userInputArray.push(userInput);
