@@ -44,13 +44,18 @@ function animateTyping() {
     }
 
 async function generateResponse(userInput, context, securityKey) {
-  // Define the chatbot's responses here
+
+  // Create the userInputArray array
+  const userInputArray = [];
+
+  // Add userInput to the array
+  userInputArray.push(userInput);
 
   // Create the response object
   const response = {
     security_key: securityKey,
     context: context,
-    given_input: userInput
+    given_input: userInputArray
   };
 
   // Convert the response object to a JSON string
