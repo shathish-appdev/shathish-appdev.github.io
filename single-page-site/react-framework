@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Buttons and Textbox</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+      const App = () => {
+        const [inputText, setInputText] = React.useState("");
+
+        const handleClick = (text) => {
+          setInputText(inputText + text);
+        };
+
+        return (
+          <div>
+            <h1>React Buttons and Textbox</h1>
+            <div>
+              <button onClick={() => handleClick("Hello ")}>Hello</button>
+              <button onClick={() => handleClick("World ")}>World</button>
+              <button onClick={() => handleClick("!")}>!</button>
+            </div>
+            <input
+              type="text"
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+            />
+          </div>
+        );
+      };
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
