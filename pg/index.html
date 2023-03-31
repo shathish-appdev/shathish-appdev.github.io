@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Buttons and Textbox</title>
+
+    <style>
+        .button-group {
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        .empty-row {
+            height: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+
+        const ButtonGroup = ({ name, children }) => {
+            return (
+                <div>
+                    {name && <div>{name}</div>}
+                    <div class="button-group">
+                        {children}
+                    </div>
+                </div>
+            );
+        };
+
+
+        const App = () => {
+            const [inputText, setInputText] = React.useState("");
+
+            function handleClick(text) {
+                setInputText(inputText + text);
+            }
+
+            function prompt_generator() {
+                var prompt =
+                    "I want you to become my Prompt Creator. ";
+                setInputText(prompt);
+            }
+
+            function handleCopy() {
+                navigator.clipboard.writeText(inputText);
+            }
+
+            return (
+                <div>
+                    <h1>React Buttons and Textbox</h1>
+                    <ButtonGroup name="Samples">
+                        <button onClick={() => handleClick("Hello ")}>Hello</button>
+                        <button onClick={() => handleClick("World ")}>World</button>
+                    </ButtonGroup >
+                    <div class="empty-row"></div>
+                    <ButtonGroup name="Prompt Generation">
+                        <button onClick={() => prompt_generator()}> Prompt Generator</button>
+                        </ButtonGroup >
+                        <div class="empty-row"></div>
+             
+
+
+
+                    <textarea
+                        value={inputText}
+                        onChange={(e) => setInputText(e.target.value)}
+                        rows={30}
+                        cols={120}
+                    ></textarea>
+                    <div class="empty-row"></div>
+                    <button onClick={() => handleCopy()}>Copy Prompt</button>
+                </div>
+            );
+        };
+
+        ReactDOM.render(
+            <div>
+                <App />
+            </div>,
+            document.getElementById("root")
+        );
+    </script>
+</body>
+
+</html>
