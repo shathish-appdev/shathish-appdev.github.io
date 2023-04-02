@@ -78,8 +78,11 @@ button:hover {
     case 'action':
       prompt = 'Please provide an action prompt.';
       break;
+    case 'real-estate-ad':
+      prompt = 'You need to write an ad for real estate to post in olx.com website.The ad should be easy to understand for an Indian buyer. Target audience is customer who are looking to buy investment property. Following are the notes about the property';
+      break;
     default:
-      prompt = 'Promot not recognized.';
+      prompt = 'Prompt not recognized.';
   }
   setInputText(prompt);
 }
@@ -102,6 +105,10 @@ function handle_prompt(input) {
                     <div class="empty-row"></div>
                     <ButtonGroup name="Prompt Generation">
                         <button onClick={() => prompt_generator('greeting')}> Prompt Generator</button>
+                        </ButtonGroup >
+                        
+                    <ButtonGroup name="Online Ads">
+                        <button onClick={() => prompt_generator('real-estate-ad')}> Real Estate Ad </button>
                         </ButtonGroup >
                         <div class="empty-row"></div>
              
