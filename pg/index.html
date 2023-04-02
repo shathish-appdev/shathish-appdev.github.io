@@ -48,11 +48,19 @@
                 setInputText(inputText + text);
             }
 
-            function prompt_generator() {
-                var prompt =
-                    "I want you to become my Prompt Creator. ";
-                setInputText(prompt);
-            }
+            function prompt_generator(input) {
+  let prompt;
+  switch (input) {
+    case 'greeting':
+      prompt = 'Please provide a greeting prompt.';
+    case 'action':
+      prompt = 'Please provide an action prompt.';
+    default:
+      prompt = 'I want you to become my Prompt Creator.';
+  }
+  setInputText(prompt);
+}
+
 
             function handleCopy() {
                 navigator.clipboard.writeText(inputText);
@@ -67,7 +75,7 @@
                     </ButtonGroup >
                     <div class="empty-row"></div>
                     <ButtonGroup name="Prompt Generation">
-                        <button onClick={() => prompt_generator()}> Prompt Generator</button>
+                        <button onClick={() => prompt_generator("greeting")}> Prompt Generator</button>
                         </ButtonGroup >
                         <div class="empty-row"></div>
              
