@@ -64,6 +64,9 @@
   setInputText(prompt);
 }
 
+function handle_prompt(input) {
+    setInputText(prompt_generator1(input));
+    }
 
             function handleCopy() {
                 navigator.clipboard.writeText(inputText);
@@ -78,7 +81,7 @@
                     </ButtonGroup >
                     <div class="empty-row"></div>
                     <ButtonGroup name="Prompt Generation">
-                        <button onClick={() => prompt_generator1('greeting')}> Prompt Generator</button>
+                        <button onClick={() => handle_prompt('greeting')}> Prompt Generator</button>
                         </ButtonGroup >
                         <div class="empty-row"></div>
              
